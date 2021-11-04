@@ -11,9 +11,16 @@ const Content = () => {
 
   const addOrder = (fname, lname, date) => {
     console.log(fname, lname, date);
-    const id = orders.length + 1;
-    const text = `הזמנה ${id}`;
-    const order = { id, text, fname, lname, date };
+    let id = "";
+    let title = "";
+    if (orders.length < 1) {
+      id = 1; // end case where the list is empty
+      title = `הזמנה ${id}`;
+    } else {
+      id = orders[orders.length - 1].id + 1; // always check what the last index is actually and not what the length of the list, to avoid glitches in deleting an order
+      title = `הזמנה ${id}`;
+    }
+    const order = { id, title, fname, lname, date };
     setOrders([...orders, order]);
   };
 
@@ -22,6 +29,7 @@ const Content = () => {
     setOrders(newOrders);
   };
 
+  // let us know that we're in the editing mode to render update component
   const editOrder = (order) => {
     setIsEditMode(true);
     setOrder(order);
@@ -41,7 +49,7 @@ const Content = () => {
       } else return order;
     });
     setOrders(newOrders);
-    setIsEditMode(false);
+    setIsEditMode(false); // after the update return to new order mode
   };
 
   useEffect(() => {
@@ -57,6 +65,7 @@ const Content = () => {
         gridGap: "20px",
       }}
     >
+      {/* toggle between NewOrder and UpdateOrder components */}
       {isEditMode ? (
         <div className="grid-child purple">
           <UpdateOrder updateOrder={updateOrder} order={order} />

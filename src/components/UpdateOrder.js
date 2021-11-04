@@ -11,7 +11,6 @@ const UpdateOrder = ({ updateOrder, order }) => {
   const [date, setDate] = useState("");
 
   const handleChange = (e) => {
-    console.log(e);
     switch (e.target.name) {
       case "fname":
         setFname(e.target.value);
@@ -20,8 +19,7 @@ const UpdateOrder = ({ updateOrder, order }) => {
         setLname(e.target.value);
         break;
       case "date":
-        const date = moment(e.target.value).format("DD-MM-YYYY");
-        console.log(date);
+        const date = moment(e.target.value).format("DD/MM/YYYY");
         setDate(date);
         break;
       default:

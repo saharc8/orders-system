@@ -10,8 +10,8 @@ const NewOrder = ({ addOrder }) => {
   const [lname, setLname] = useState("");
   const [date, setDate] = useState("");
 
+  // manages the changes in inputs
   const handleChange = (e) => {
-    console.log(e);
     switch (e.target.name) {
       case "fname":
         setFname(e.target.value);
@@ -20,8 +20,7 @@ const NewOrder = ({ addOrder }) => {
         setLname(e.target.value);
         break;
       case "date":
-        const date = moment(e.target.value).format("DD-MM-YYYY");
-        console.log(date);
+        let date = moment(e.target.value).format("DD/MM/YYYY"); // moment.js libary for format date
         setDate(date);
         break;
       default:

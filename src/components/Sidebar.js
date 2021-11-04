@@ -34,7 +34,7 @@ const Sidebar = ({ orders, closeOrder, editOrder }) => {
               </button>
               <CardContent>
                 <Typography variant="h5" component="div">
-                  {order.text}
+                  {order.title}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   פרטים
