@@ -65,7 +65,9 @@ const UpdateOrder = ({ updateOrder, order }) => {
           />
         </div>
         <Button
-          onClick={() => updateOrder(fname, lname, date)}
+          onClick={() => {
+            updateOrder(fname, lname, date);
+          }}
           className="updateBtn"
           variant="contained"
         >

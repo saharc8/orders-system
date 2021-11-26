@@ -11,17 +11,21 @@ const Content = () => {
 
   const addOrder = (fname, lname, date) => {
     console.log(fname, lname, date);
-    let id = "";
-    let title = "";
-    if (orders.length < 1) {
-      id = 1; // end case where the list is empty
-      title = `הזמנה ${id}`;
+    if (fname !== "" && lname !== "" && date !== "") {
+      let id = "";
+      let title = "";
+      if (orders.length < 1) {
+        id = 1; // end case where the list is empty
+        title = `הזמנה ${id}`;
+      } else {
+        id = orders[orders.length - 1].id + 1; // always check what the last index is actually and not what the length of the list, to avoid glitches in deleting an order
+        title = `הזמנה ${id}`;
+      }
+      const order = { id, title, fname, lname, date };
+      setOrders([...orders, order]);
     } else {
-      id = orders[orders.length - 1].id + 1; // always check what the last index is actually and not what the length of the list, to avoid glitches in deleting an order
-      title = `הזמנה ${id}`;
+      alert("empty fields");
     }
-    const order = { id, title, fname, lname, date };
-    setOrders([...orders, order]);
   };
 
   const closeOrder = (id) => {
@@ -42,9 +46,9 @@ const Content = () => {
       if (order.id === id) {
         return {
           ...order,
-          fname: fname,
-          lname: lname,
-          date: date,
+          fname: fname || order.fname,
+          lname: lname || order.lname,
+          date: date || order.date,
         };
       } else return order;
     });

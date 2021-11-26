@@ -22,11 +22,11 @@ const Nav = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <img
-              src={process.env.PUBLIC_URL + "/DeLawVery-logo.svg"}
+            {/* <img
+              src={process.env.PUBLIC_URL + "/logo.svg"}
               alt="logo"
               style={{ height: "30px" }}
-            />
+            /> */}
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
